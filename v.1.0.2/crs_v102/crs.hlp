@@ -1,0 +1,136 @@
+{smcl}
+{* 02may2007}{...}
+{cmd:help crs}{right:version:  1.0.2}
+{hline}
+
+{title:Title}
+
+{p 4 8}{cmd:crs}  -  Canay, Romano, and Shaikh (2016) procedure{p_end}
+
+
+{title:Syntax}
+
+{p 4 6 2}
+{cmdab:crs}
+{depvar}
+{indepvars}
+{ifin}
+[, options]
+
+
+{title:Description}
+
+{p 4 4 2}
+{opt crs} provides a procedure for inference with few clusters. It implements the approximate randomization test using random sign changes outlined in Canay, Romano and Shaikh (2016).{p_end}
+
+{title:Output}
+
+{p 4 6 2}
+- {opt Coef.} represents the estimate using the whole sample.{p_end}
+{p 4 6 2}
+- {opt Mean} represents the mean of the estimates across each group.{p_end}
+{p 4 6 2}
+- Confidence Intervals are calculated using test inversion with a bisection algorithm.{p_end}
+
+{title:Notes}
+
+{p 4 6 2}
+- Recommended that at least 6 clusters are present for the numerical performance of the procedure.{p_end}
+{p 4 6 2}
+- Note that only clusters where the parameter is identified are used in the procedure.{p_end}
+{p 4 6 2}
+- To observe which clusters are used in procedure, see stored result {cmd:r(b_group)} which reports estimates of variable coefficients (in columns) for each cluster (in rows). The constant unless omitted is in final column. A value of 0 indicates that parameter is not identified.{p_end}
+{p 4 6 2}
+- Independent variables must be pre-generated variables in stata. Command does not support factor and time series operators from stata.{p_end}
+
+{title:Options}
+
+{phang}
+{opt noc:onstant} specifies whether model should be estimated without a constant. If this option is omitted then a constant is included by default.
+
+{phang}
+{opt m:odel(string)} specifies the type of parametric relationship between the independent and dependent variables. Possible model options include: ({opt regress}, {opt logit}, {opt probit}). This option must be specified.
+
+{phang}
+{opt mar:gins} specifies whether the parameters of interest are the marginal effects, which are computed using the stata package {opt margins}. If this option is omitted then marginal effects are not used by default.
+
+{phang}
+{opt clust:er(string)} indicates the variable in the dataset that determines which cluster each observation belongs to. This options must be specified.
+
+{phang}
+{opt l:evel(#)} specifies the level at which the confidence intervals are computed. This must take a real value between 0 and 100. The default option is 95.
+
+{phang}
+{opt s:igns(#)} specifies the number of sign changes performed for computing the randomisation distribution. This must take a positive integer value. The default option is 999.
+
+{phang}
+{opt r:eport(varlist)} specifies list of variables amongst the covariates whose results are reported. Note that the joint test is performed only on reported variables. If this option is omitted then all variables are reported by default.
+
+{phang}
+{opt tol:erance(#)} specifies the tolerance level for the termination of the test inversion algorithm. To be specific, it determines at what difference between the p-value and the chosen level of significance can we terminate the algorithm. The default option is 0.025.
+
+
+{title:Example}
+
+{phang}Load dataset from Angrist and Lavy (2009).{p_end}
+{phang}{stata "use base01.dta" : . use base01.dta}{p_end}
+
+{phang}Generate group variable in dataset, for example denoted by{stata "group" : group}.{p_end}
+
+{phang}Implement test using this group and a linear model.{p_end}
+{phang}{stata "crs zakaibag treated semarab semrel, clust(group) m(regress)" : . crs zakaibag treated semarab semrel, clust(group) m(regress)}{p_end}
+
+{phang}Implement the above but only report `treated' variable.{p_end}
+{phang}{stata "crs zakaibag treated semarab semrel, clust(group) m(regress) r(treated)" : . crs zakaibag treated semarab semrel, clust(group) m(regress) r(treated)}{p_end}
+
+{phang}Implement test using this group, a logit model and with marginal effects.{p_end}
+{phang}{stata "crs zakaibag treated semarab semrel, clust(group) m(logit) margins" : . crs zakaibag treated semarab semrel, clust(group) m(logit) margins}{p_end}
+
+
+{title:Stored Results}
+
+{cmd:crs} stores the following in {cmd:r()}:
+
+{synoptset 20 tabbed}{...}
+{syntab:Scalars:}
+{synopt:{cmd:r(N)}}total number of observations{p_end}
+{synopt:{cmd:r(q)}}number of clusters{p_end}
+{synopt:{cmd:r(N_min)}}minimum number of observations in a cluster{p_end}
+{synopt:{cmd:r(N_max)}}maximum number of observations in a cluster{p_end}
+{synopt:{cmd:r(P)}}number of sign changes performed{p_end}
+{synopt:{cmd:r(F_stat)}}value of F statistic {p_end}
+{synopt:{cmd:r(level)}}confidence level{p_end}
+
+{syntab:Macros:}
+{synopt:{cmd:r(indepvars)}}independent variables used{p_end}
+{synopt:{cmd:r(depvar)}}dependent variable used{p_end}
+{synopt:{cmd:r(model)}}parametric model in estimation{p_end}
+{synopt:{cmd:r(teststat)}}test statistic used{p_end}
+{synopt:{cmd:r(cmd)}}{cmd:crs}{p_end}
+
+{syntab:Matrices:}
+{synopt:{cmd:r(b)}}estimates using whole sample{p_end}
+{synopt:{cmd:r(b_cluster)}}estimates for all variables in each group{p_end}
+{synoptline}
+
+
+{title:References}
+
+{p 4 6 2}
+ - Angrist, J.D. and Lavy, V. (2009). The effects of high stakes high school achievement awards: Evidence from a randomized trial. American Economic Review 1384-1414.{p_end}
+
+{p 4 6 2}
+ - Canay, I.A., Romano, J.P., and Shaikh, A.M. (2016). Randomization tests under an approximate symmetry assumption. Manuscript.{p_end}
+
+
+{title:Authors}
+
+{p 4 4}Ivan A. Canay, Northwestern University, iacanay@northwestern.edu{p_end}
+
+{p 4 4}Joseph P. Romano, Stanford University, romano@stanford.edu
+{p_end}
+
+{p 4 4}Azeem M. Shaikh, University of Chicago, amshaikh@uchicago.edu
+{p_end}
+
+
