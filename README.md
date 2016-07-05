@@ -1,5 +1,7 @@
 # README #
 
+[**DOWNLOAD LATEST COMMIT**](https://bitbucket.org/iacanay/crs-stata/get/HEAD.zip)
+
 ### What is this repository for? ###
 
 * Stata package CRS
