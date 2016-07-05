@@ -1,20 +1,23 @@
-This is a README file for `crs'.
-------------------------------------------------------------------------------
+# README #
 
-SUBJECT:    crs
+### What is this repository for? ###
 
-AUTHOR(S):  Ivan A. Canay
-            Northwestern University
+* Stata package CRS
+* Implements randomization tests for inference with few clusters
+* Canay, Romano, and Shaikh (2015): Randomization Tests Under an Approximate Symmetry Assumption
 
-            Joseph P. Romano
-            Stanford University
+### Authors of the paper ###
+* Ivan A. Canay, Northwestern University
+* Joseph P. Romano, Stanford University
+* Azeem M. Shaikh, University of Chicago
 
-            Azeem M. Shaikh
-            University of Chicago
+### Contributors of the package ###
+* Ivan A. Canay, Northwestern University
+* Vishal Kamat, Northwestern University 
 
-SUPPORT:    <iacanay@northwestern.edu>
+### How do I get set up? ###
 
-NOTES:      Download files in working directory, and run the following command    
+ Download files in working directory, and run the following command    
             before implementing:
  
             . capture program drop crs
@@ -25,9 +28,14 @@ NOTES:      Download files in working directory, and run the following command
             The file `crs_tutorial.pdf' also provides a brief tutorial on the 
             implementation of the command. For further help type:
 
-            . help crs
+            . help cos
 
-FILES:
+### Who do I talk to? ###
+
+* Repository owner: <iacanay@northwestern.edu>
+* Repository admin: <v.kamat@u.northwestern.edu>
+
+### Files ###
 
 crs.ado
 crs.hlp
