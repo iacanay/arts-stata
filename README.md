@@ -17,18 +17,17 @@
 
 ### How do I get set up? ###
 
- Download files in working directory, and run the following command    
-            before implementing:
+ Download files in working directory, and run the following command before implementing:
  
-            . capture program drop crs
+  . capture program drop crs
 
-            The file `crs_example.do' illustrates the implementation for some 
-            results in Canay, Romano & Shaikh (2015) on the dataset from 
-            Angrist and Lavy (2009). The dataset is contained in `base01.dta'. 
-            The file `crs_tutorial.pdf' also provides a brief tutorial on the 
-            implementation of the command. For further help type:
+ The file "crs_example.do" illustrates the implementation for some 
+ results in Canay, Romano & Shaikh (2015) on the dataset from 
+ Angrist and Lavy (2009). The dataset is contained in "base01.dta". 
+ The file "crs_tutorial.pdf" also provides a brief tutorial on the 
+ implementation of the command. For further help type:
 
-            . help cos
+ . help crs
 
 ### Who do I talk to? ###
 
