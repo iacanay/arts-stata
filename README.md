@@ -1,6 +1,6 @@
 # README #
 
-[**DOWNLOAD LATEST COMMIT**](https://bitbucket.org/iacanay/crs-stata/get/HEAD.zip)
+[**DOWNLOAD CRS PACKAGE**](https://bitbucket.org/iacanay/crs-stata/get/HEAD.zip)
 
 ### What is this repository for? ###
 
@@ -50,4 +50,4 @@ CRS-STATA is released under the [MIT LICENSE](https://bitbucket.org/iacanay/crs-
 
 ### Changelog 
 
-A complete version history is here: [CHANGELOG](https://bitbucket.org/iacanay/crs-stata/wiki/Home) 
+A complete version history is here: [CHANGELOG](https://bitbucket.org/iacanay/crs-stata/wiki/Home)
