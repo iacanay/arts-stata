@@ -43,3 +43,11 @@ crs.hlp
 crs_example.do
 crs_tutorial.pdf
 base01.dta
+
+### LICENSE
+
+CRS-STATA is released under the [MIT LICENSE](https://bitbucket.org/iacanay/crs-stata/raw/master/LICENSE)
+
+### Changelog 
+
+A complete version history is here: [CHANGELOG](https://bitbucket.org/iacanay/crs-stata/wiki/Home) 
