@@ -16,6 +16,8 @@
 ### Contributors of the package ###
 * Ivan A. Canay, Northwestern University
 * Vishal Kamat, Northwestern University 
+* Azeem M. Shaikh, University of Chicago
+* Joseph P. Romano, Stanford University
 
 ### How do I get set up? ###
 
