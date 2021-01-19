@@ -1,17 +1,17 @@
 {smcl}
 {* 02may2007}{...}
-{cmd:help crs}{right:version:  1.0.3}
+{cmd:help art}{right:version:  1.1}
 {hline}
 
 {title:Title}
 
-{p 4 8}{cmd:crs}  -  Canay, Romano, and Shaikh (2016) procedure{p_end}
+{p 4 8}{cmd:art}  -  Canay, Romano, and Shaikh (2017) procedure{p_end}
 
 
 {title:Syntax}
 
 {p 4 6 2}
-{cmdab:crs}
+{cmdab:art}
 {depvar}
 {indepvars}
 {ifin}
@@ -21,7 +21,7 @@
 {title:Description}
 
 {p 4 4 2}
-{opt crs} provides a procedure for inference with few clusters. It implements the approximate randomization test using random sign changes outlined in Canay, Romano and Shaikh (2016).{p_end}
+{opt art} provides a procedure for inference with a small number of clusters. It implements the approximate randomization test (ART) using random sign changes outlined in Canay, Romano and Shaikh (2017).{p_end}
 
 {title:Output}
 
@@ -78,18 +78,18 @@
 {phang}Generate group variable in dataset, for example denoted by{stata "group" : group}.{p_end}
 
 {phang}Implement test using this group and a linear model.{p_end}
-{phang}{stata "crs zakaibag treated semarab semrel, clust(group) m(regress)" : . crs zakaibag treated semarab semrel, clust(group) m(regress)}{p_end}
+{phang}{stata "art zakaibag treated semarab semrel, clust(group) m(regress)" : . art zakaibag treated semarab semrel, clust(group) m(regress)}{p_end}
 
 {phang}Implement the above but only report `treated' variable.{p_end}
-{phang}{stata "crs zakaibag treated semarab semrel, clust(group) m(regress) r(treated)" : . crs zakaibag treated semarab semrel, clust(group) m(regress) r(treated)}{p_end}
+{phang}{stata "art zakaibag treated semarab semrel, clust(group) m(regress) r(treated)" : . art zakaibag treated semarab semrel, clust(group) m(regress) r(treated)}{p_end}
 
 {phang}Implement test using this group, a logit model and with marginal effects.{p_end}
-{phang}{stata "crs zakaibag treated semarab semrel, clust(group) m(logit) margins" : . crs zakaibag treated semarab semrel, clust(group) m(logit) margins}{p_end}
+{phang}{stata "art zakaibag treated semarab semrel, clust(group) m(logit) margins" : . art zakaibag treated semarab semrel, clust(group) m(logit) margins}{p_end}
 
 
 {title:Stored Results}
 
-{cmd:crs} stores the following in {cmd:r()}:
+{cmd:art} stores the following in {cmd:r()}:
 
 {synoptset 20 tabbed}{...}
 {syntab:Scalars:}
@@ -107,7 +107,7 @@
 {synopt:{cmd:r(depvar)}}dependent variable used{p_end}
 {synopt:{cmd:r(model)}}parametric model in estimation{p_end}
 {synopt:{cmd:r(teststat)}}test statistic used{p_end}
-{synopt:{cmd:r(cmd)}}{cmd:crs}{p_end}
+{synopt:{cmd:r(cmd)}}{cmd:art}{p_end}
 
 {syntab:Matrices:}
 {synopt:{cmd:r(b)}}estimates using whole sample{p_end}
@@ -122,7 +122,7 @@
  - Angrist, J.D. and Lavy, V. (2009). The effects of high stakes high school achievement awards: Evidence from a randomized trial. American Economic Review 1384-1414.{p_end}
 
 {p 4 6 2}
- - Canay, I.A., Romano, J.P., and Shaikh, A.M. (2016). Randomization tests under an approximate symmetry assumption. Manuscript.{p_end}
+ - Canay, I.A., Romano, J.P., and Shaikh, A.M. (2017). Randomization tests under an approximate symmetry assumption. Econometrica, 85, 1013-1030.{p_end}
 
 
 {title:Authors}

@@ -1,5 +1,5 @@
-*! version 1.0.3 05Jul2016
-program define crs, rclass
+*! version 1.1 18Jan2021
+program define art, rclass
 version 13
 
 syntax varlist [if] [in]                                                        ///
@@ -137,7 +137,7 @@ void crs_work(string scalar report_s, string scalar outcome_s,                  
    k          = ceil((1-alpha_s)*P)                                             //k value in sorted test statistics
 
    printf("   \n")
-   printf("CRS Approximate Randomization Test.\n")
+   printf("Approximate Randomization Test.\n")
    printf("Model used is {txt}%s.\n", model_s)
    if (margins_s == "") {
    }
@@ -159,16 +159,15 @@ void crs_work(string scalar report_s, string scalar outcome_s,                  
    else {
      if ((noconstant,margins_s)==("" , "")) {
        rep_ind[1,D] = 1                                                         //Constant is always reported
-	   for (i=1; i <= (D-1); i++) {                    
-         ind_temp     = strpos(name_rep, name_cov[1,(i)])                       //
-	     rep_ind[1,i] = sum(ind_temp)                                           //Indicates whether covariate is in reported variable
+	   for (i=1; i <= (D-1); i++) {      										//Indicates whether covariate is in reported variable
+	     rep_ind[1,i] =  sum(name_cov[1,(i)] :== name_rep)                      // NEW in v1.1. Checks string equality rather than containment 
+																				
        }   
      }
      else {
        rep_ind      = J(1,D,0)                                                  //
 	   for (i=1; i <= D; i++) {
-         ind_temp     = strpos(name_rep, name_cov[1,(i)])                       //
-	     rep_ind[1,i] = sum(ind_temp)                                           //
+	     rep_ind[1,i] = sum(name_cov[1,(i)] :== name_rep)                       // NEW in v1.1. Checks string equality rather than containment 
        }
      }
    }

@@ -5,10 +5,10 @@
 \deftab720
 \pard\pardeftab720\ql\qnatural
 
-\f0\fs24 \cf0 This is a README file for `crs'.\
+\f0\fs24 \cf0 This is a README file for `art'.\
 ------------------------------------------------------------------------------\
 \
-SUBJECT:    crs\
+SUBJECT:    art\
 \
 AUTHOR(S):  Ivan A. Canay\
             Northwestern University\
@@ -24,20 +24,20 @@ SUPPORT:    <iacanay@northwestern.edu>\
 NOTES:      Download files in working directory, and run the following command    \
             before implementing:\
  \
-            . capture program drop crs\
+            . capture program drop art\
 \
-            The file `crs_example.do' illustrates the implementation for some \
-            results in Canay, Romano & Shaikh (2015) on the dataset from \
+            The file `art_example.do' illustrates the implementation for some \
+            results in Canay, Romano & Shaikh (2017) on the dataset from \
             Angrist and Lavy (2009). The dataset is contained in `base01.dta'. \
-            The file `crs_tutorial.pdf' also provides a brief tutorial on the \
+            The file `art_tutorial.pdf' also provides a brief tutorial on the \
             implementation of the command. For further help type:\
 \
-            . help crs\
+            . help art\
 \
 FILES:\
 \
-crs.ado\
-crs.hlp\
-crs_example.do\
-crs_tutorial.pdf\
+art.ado\
+art.hlp\
+art_example.do\
+art_tutorial.pdf\
 base01.dta}

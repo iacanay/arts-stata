@@ -2,17 +2,17 @@ clear
 set more off
 capture log close
 cd ".."                                                                         //Change to working directory
-log using "crs_example.smcl", replace 
+log using "art_example.smcl", replace 
 
 ********************************************************************************
-//----Canay, Romano & Shaikh(2015) randomization test on Angrist and Lavy(2009)
+//----Canay, Romano & Shaikh(2017) Approximate Randomization Test on Angrist and Lavy(2009)
 ********************************************************************************
 
 //----Load dataset used in Angrist and Lavy(2009)-------------------------------
 
 use base01.dta, clear 
 
-//----Generate group variable as per Canay, Romano & Shaikh(2015)---------------
+//----Generate group variable as per Canay, Romano & Shaikh (2017)---------------
 
 gen group = 1
 
@@ -27,11 +27,11 @@ replace group = 9 if pair == 16 | pair == 17
 replace group = 10 if pair == 18 | pair == 20
 replace group = 11 if pair == 19
 
-//----Load CRS Stata package----------------------------------------------------
+//----Load ART Stata package----------------------------------------------------
 
-capture program drop crs
+capture program drop art
 
-//----Generate additional covariates as in Angrist and Lavy(2009)---------------
+//----Generate additional covariates as in Angrist and Lavy (2009)---------------
 
 gen ls25=0	
 gen ls50=0
@@ -46,21 +46,21 @@ replace ls100=1 if ls50+ls25+ls75==0
 
 gen ah4=m_ahim>=4
 
-//----Implement CRS to compute new confidence intervals-------------------------
+//----Implement ARTs to compute new confidence intervals-------------------------
 
 //----Results using sample of boys + girls--------------------------------------
 //----OLS-----------------------------------------------------------------------
-//----Table 3 in Canay, Romano & Shaikh (2015)----------------------------------
-crs zakaibag treated semarab semrel, cluster(group) l(90) m(regress) report(treated)
-crs zakaibag treated semarab semrel, cluster(group) l(95) m(regress) report(treated)
-crs zakaibag treated semarab semrel ls50 ls75 ls100 educav educem ah4 ole5, cluster(group) l(90) m(regress) report(treated)
-crs zakaibag treated semarab semrel ls50 ls75 ls100 educav educem ah4 ole5, cluster(group) l(95) m(regress) report(treated)
+//----Table 3 in Canay, Romano & Shaikh (2017)----------------------------------
+art zakaibag treated semarab semrel, cluster(group) l(90) m(regress) report(treated)
+art zakaibag treated semarab semrel, cluster(group) l(95) m(regress) report(treated)
+art zakaibag treated semarab semrel ls50 ls75 ls100 educav educem ah4 ole5, cluster(group) l(90) m(regress) report(treated)
+art zakaibag treated semarab semrel ls50 ls75 ls100 educav educem ah4 ole5, cluster(group) l(95) m(regress) report(treated)
 
 //----Results using sample of girls---------------------------------------------
 //----OLS-----------------------------------------------------------------------
-//----Table 4 (School cov. only) in Canay, Romano & Shaikh (2015)---------------
-crs zakaibag treated semarab semrel if boy == 0, cluster(group) l(90) m(regress) report(treated)
-crs zakaibag treated semarab semrel if boy == 0, cluster(group) l(95) m(regress) report(treated)
+//----Table 4 (School cov. only) in Canay, Romano & Shaikh (2017)---------------
+art zakaibag treated semarab semrel if boy == 0, cluster(group) l(90) m(regress) report(treated)
+art zakaibag treated semarab semrel if boy == 0, cluster(group) l(95) m(regress) report(treated)
 
 log off 
 
