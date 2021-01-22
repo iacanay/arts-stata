@@ -1,4 +1,4 @@
-*! version 1.1 18Jan2021
+*! version 1.1.1 22Jan2021
 program define art, rclass
 version 13
 
@@ -30,6 +30,25 @@ marksample touse
 gettoken outcome covariates :varlist                                            //Parsing outcome and covariates
 tempname N q N_min N_max F_stat b_group S start N_group b_hat N_d pval pval_j   //Creating temporary names to store values
 tempvar g_s                                                                     //Creating temporary variable
+
+
+local vlist : word 1 of `covariates'											// NEW in v1.1. Remove duplicates in list of covariates
+foreach varname of varlist `covariates' {
+    local toadd = 1
+	foreach newvar of varlist `vlist' {
+	    if "`newvar'" == "`varname'" {
+		    local toadd = 0
+			//display "Duplicate " "`newvar'" " removed" 
+			break
+		}
+	}
+	if `toadd' == 1 {
+	    local vlist `vlist' `varname'
+	}
+}
+local covariates `vlist'
+
+
 
 local var_count : word count `covariates'                                       //Counting number of variables
 scalar `N_d' = `var_count'                                                      //Storing number of variables 
