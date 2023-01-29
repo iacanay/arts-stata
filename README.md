@@ -1,7 +1,5 @@
 # README #
 
-[**DOWNLOAD CRS PACKAGE**](https://bitbucket.org/iacanay/arts-stata/get/HEAD.zip)
-
 ### What is this repository for? ###
 
 * Stata package ARTs
@@ -53,8 +51,4 @@ base01.dta
 
 ### LICENSE
 
-art-STATA is released under the [MIT LICENSE](https://bitbucket.org/iacanay/crs-stata/raw/master/LICENSE)
-
-### Changelog 
-
-A complete version history is here: [CHANGELOG](https://bitbucket.org/iacanay/crs-stata/wiki/Home)
+art-STATA is released under the [MIT LICENSE](https://github.com/iacanay/arts-stata/blob/master/LICENSE)
